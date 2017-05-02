@@ -1,0 +1,160 @@
+.nav > li > a {
+    display: inline-block;
+}
+.blog-nav {
+    background-color: rgba(255,241,241,0.8);
+    padding: 10px 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.icon-bar {
+    background-color: #00a0e9;
+}
+.container-fluid {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.blog-title {
+    color: rgb(240,195,186);
+    font-size: 30px;
+}
+.navbar-header a:hover {
+    color: rgb(260,195,186);
+}
+
+.navbar-nav a {
+    font-size: 16px;
+    color: #000;
+}
+
+.navbar-nav a:hover {
+    background-color: rgb(240,195,186);
+    color: #fff;
+}
+
+.blog-sign {
+    padding: 15px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 1px solid #f0c3ba;
+    border-radius: 1em;
+}
+
+.blog-sign h4{
+    color: rgb(240,195,186);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.blog-btn, .comment-btn {
+    margin-top: 10px;
+    color: #fff;
+    background-color: rgb(260,195,186);
+    min-width: 100%;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.comment-btn {
+    min-width: 15%;
+}
+
+.blog-notice {
+    margin: 20px 35%;
+}
+
+.post-content, .comments-content {
+    padding: 0 20px 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(240,195,186);
+    border-radius: 0.4em;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.small-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0;
+}
+
+.tag {
+    padding-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.tag span {
+    margin-right: 5px;
+}
+
+.editmenu {
+    min-width: 40px;
+}
+
+pre {
+    border: 0;
+    background-color: rgba(240,195,186,0.15);
+    font-size: 14px;
+}
+
+.comment {
+    padding-left: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(240,195,186,0.3);
+}
+.content {
+    margin-left: 15px;
+}
+.main-content {
+    padding: 10px 0;
+}
+.name {
+    color: #0d3349;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.delete-btn {
+    padding: 2px;
+}
+.delete-btn a:hover{
+    text-decoration: none;
+    border-bottom: 4px solid rgb(240,195,186);
+}
+
+.col-md-1,.col-sm-1,.col-md-10,.col-sm-10 {
+    padding: 0;
+}
+
+.page_404 p {
+    color: #00a0e9;
+    font-size: 50px;
+    font-family: "Calibri", "sans-serif";
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.page_404 a {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 0.4em;
+    background-color: #0a246a;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.img_404 {
+    display: block;
+    margin: 40px auto;
+}

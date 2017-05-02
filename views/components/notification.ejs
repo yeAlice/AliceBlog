@@ -1,0 +1,19 @@
+<div class="blog-notice">
+    <% if (success) { %>
+    <div class="alert alert-success" role="alert">
+        <p>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <%= success %>
+        </p>
+    </div>
+    <% } %>
+
+    <% if (error) { %>
+    <div class="alert alert-danger" role="alert">
+        <p>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <%= error %>
+        </p>
+    </div>
+    <% } %>
+</div>

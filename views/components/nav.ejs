@@ -1,0 +1,41 @@
+<nav class="navbar blog-nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#blog-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand blog-title" href="/posts">AliceBlog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="blog-navbar">
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入关键词">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-item"><a href="/posts">主页</a></li>
+                <% if(user) { %>
+                <li class="dropdown navbar-item">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.name %><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="navbar-item"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
+                        <li class="navbar-item"><a href="/posts/create">发表文章</a></li>
+                        <!--<li class="navbar-item"><a href="/users/<%= user._id %>">个人信息</a></li>-->
+                        <li class="navbar-item"><a href="/users/<%= user._id %>/edit">修改个人信息</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="navbar-item"><a href="/signout">登出</a></li>
+                    </ul>
+                </li>
+                <% }else{ %>
+                <li class="navbar-item"><a href="/signin" class="navbar-item">登录</a>/<a href="/signup" class="navbar-item">注册</a></li>
+                <% } %>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

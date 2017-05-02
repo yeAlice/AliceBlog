@@ -1,0 +1,44 @@
+<%- include('header') %>
+
+<div class="blog-sign">
+    <h4 class="text-center">注&nbsp;&nbsp;&nbsp;&nbsp;册</h4>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">用户名</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="用户名" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">性别</label><br>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="m" value="m">男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="f" value="f">女
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="x" value="x">保密
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="密码" required>
+        </div>
+        <div class="form-group">
+            <label for="repassword">确认密码</label>
+            <input type="password" name="repassword" class="form-control" id="repassword" placeholder="确认密码" required>
+        </div>
+        <div class="form-group">
+            <label>头像</label>
+            <input type="file" name="avatar" id="avatar" required>
+        </div>
+        <div class="form-group">
+            <label for="bio">个人简介</label>
+            <textarea class="form-control" rows="4" name="bio" id="bio" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn blog-btn">注&nbsp;&nbsp;册</button>
+        </div>
+    </form>
+</div>
+
+<%- include('footer') %>

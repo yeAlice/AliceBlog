@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    // 点击按钮弹出下拉框
+    $('.dropdown-toggle').dropdown();
+
+    // 鼠标悬浮在头像上，弹出提示框
+    $("[data-toggle='popover']").popover({ trigger: "manual" , html: true, animation:false})
+        .on("mouseenter", function () {
+            var _this = this;
+            $(this).popover("show");
+            $(".popover").on("mouseleave", function () {
+                $(_this).popover('hide');
+            });
+        }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide");
+            }
+        }, 300);
+    });
+   /* $('.post-content .avatar').popup({
+        inline: true,
+        position: 'bottom right',
+        lastResort: 'bottom right',
+    });*/
+</script>
+</body>
+</html>

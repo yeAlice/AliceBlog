@@ -1,0 +1,30 @@
+<div class="col-md-2 col-sm-2"></div>
+<div class="col-md-10 col-sm-10">
+    <div class="col-md-1 col-sm-1">
+        <a href="/posts?author=<%= post.author._id %>"
+           title="<%= post.author.name %> | <%= ({m: '男', f: '女', x: '保密'})[post.author.gender] %>"
+           data-content="<%= post.author.bio %>"
+           data-container="body" data-toggle="popover" data-placement="bottom">
+            <img class="avatar img-responsive" src="/img/<%= post.author.avatar %>">
+        </a>
+    </div>
+    <div class="col-md-8 col-sm-8 post-content">
+        <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
+        <pre><%= post.content %></pre>
+        <div class="tag col-md-12 col-sm-12">
+            <span class="text-muted pull-left"><%= post.created_at %></span>
+            <% if(user && post.author._id && user._id.toString() === post.author._id.toString()) { %>
+            <div class="dropdown pull-right">
+                <span class="caret dropdown-toggle" type="button" id="editMenu"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span>
+                <ul class="dropdown-menu editmenu" aria-labelledby="editMenu">
+                    <li><a href="/posts/<%= post._id %>/edit">编辑</a></li>
+                    <li><a href="/posts/<%= post._id %>/remove">删除</a></li>
+                </ul>
+            </div>
+            <% } %>
+            <span class="text-muted pull-right">留言(<%= post.commentsCount %>)</span>
+            <span class="text-muted pull-right">浏览(<%= post.pv %>)</span>
+        </div>
+    </div>
+</div>
