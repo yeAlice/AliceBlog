@@ -11,16 +11,23 @@ var checkLogin = require('../middlewares/check').checkLogin;
 
 /*获取所有用户或特定用户的文章页面
 * GET /posts
-* GET /posts?author=xxx */
+* GET /posts?author=xxx&page=xxx */
 router.get('/', function (req, res, next) {
     var author = req.query.author;
+    //判断是否是第一页，并把请求的页数转换成 number 类型
+    var page = req.query.page ? parseInt(req.query.page) : 1;
 
-    PostModel.getPosts(author)
+    PostModel.getPosts(author, page)
         .then(function (posts) {
-
-            res.render('posts', {
-                posts: posts
-            });
+            PostModel.getPostsCount(author).then(function (count) {
+                res.render('posts', {
+                    posts: posts,
+                    page: page,
+                    author: author,
+                    isFirstPage: (page - 1) == 0,
+                    isLastPage: ((page - 1) * 10 + posts.length) == count
+                });
+            })
         })
         .catch(next);
 });

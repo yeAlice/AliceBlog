@@ -33,18 +33,28 @@ module.exports = {
     },
 
     // 按创建时间降序获取所有用户文章或者某个特定用户的所有文章
-    getPosts: function getPosts(author) {
+    getPosts: function getPosts(author, page) {
         var query = {};
         if (author) {
             query.author = author;
         }
         return Post
-            .find(query)
+            .find(query, {
+                skip: (page - 1)*10,
+                limit: 10
+            })
             .populate({ path: 'author', model: 'User' })
             .sort({ _id: -1 })
             .addCreatedAt()
             .addCommentsCount()
             .exec();
+    },
+    getPostsCount: function getPostsCount(author){
+        var query = {};
+        if (author) {
+            query.author = author;
+        }
+        return Post.count(query).exec();
     },
     // 通过文章 id 获取一篇文章
     getPostById: function getPostById(postId) {
