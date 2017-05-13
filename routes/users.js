@@ -69,9 +69,9 @@ router.post('/:userId/edit', checkLogin, function (req, res, next) {
         if (!(bio.length >= 1 && bio.length <= 30)) {
             throw new Error('个人简介请限制在 1-30 个字符');
         }
-        if (!req.files.avatar.name) {
+        /*if (!req.files.avatar.name) {
             throw new Error('缺少头像');
-        }
+        }*/
         if (password.length < 6) {
             throw new Error('密码至少 6 个字符');
         }
@@ -79,8 +79,8 @@ router.post('/:userId/edit', checkLogin, function (req, res, next) {
             throw new Error('两次输入密码不一致');
         }
     } catch (e) {
-        // 修改信息失败，异步删除上传的头像
-        fs.unlink(req.files.avatar.path);
+        /*// 修改信息失败，异步删除上传的头像
+        fs.unlink(req.files.avatar.path);*/
         req.flash('error', e.message); //返回错误信息
         return res.redirect('/users/'+userId+'/edit'); //跳转到修改个人信息页面
     }
@@ -89,13 +89,23 @@ router.post('/:userId/edit', checkLogin, function (req, res, next) {
     password = sha1(password);
 
     // 待写入数据库的用户信息
-    var user = {
-        name: name,
-        password: password,
-        gender: gender,
-        bio: bio,
-        avatar: avatar
-    };
+    var user;
+    if(!avatar){
+        user = {
+            name: name,
+            password: password,
+            gender: gender,
+            bio: bio,
+            avatar: avatar
+        };
+    }else {
+        user = {
+            name: name,
+            password: password,
+            gender: gender,
+            bio: bio
+        };
+    }
 
     UserModel.updateUserById(userId, user)
         .then(function () {

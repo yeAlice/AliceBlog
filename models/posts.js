@@ -94,7 +94,22 @@ module.exports = {
                     return CommentModel.delCommentsByPostId(postId);
                 }
             });
+    },
+
+    //全局搜索，根据用户输入的关键词，搜索文章标题或者文章内容，得出所有有关文章
+    search: function search(keyword) {
+        var pattern;
+        if(keyword) {
+            pattern = new RegExp(keyword, 'i');
+        }
+        return Post
+            .find({
+                "$or":[{"title": pattern}, {"content": pattern}]
+            })
+            .populate({ path: 'author', model: 'User' })
+            .sort({ _id: -1 })
+            .addCreatedAt()
+            .addCommentsCount()
+            .exec();
     }
-
-
 };

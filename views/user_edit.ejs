@@ -9,7 +9,6 @@
         </div>
         <div class="form-group">
             <label for="gender">性别</label><br>
-            <!--<%= ({m: '男', f: '女', x: '保密'})[user.gender] %>-->
             <label class="radio-inline">
                 <input type="radio" name="gender" id="m" value="m">男
             </label>
@@ -30,7 +29,14 @@
         </div>
         <div class="form-group">
             <label>头像</label>
-            <input type="file" name="avatar" id="avatar" value="<%= user.avatar %>" required>
+            <img class="big-avatar img-responsive" src="/img/<%= user.avatar %>" alt="找不到头像">
+            <input class="hideInput" type="file" name="avatar" id="fileInput">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn select-btn" id="selectInput" data-toggle="tooltip" data-placement="top" data-original-title="请选择文件">选择文件 </button>
+                </div>
+                <span class="form-control" id="selectInputTips"></span>
+            </div>
         </div>
         <div class="form-group">
             <label for="bio">个人简介</label>
@@ -41,4 +47,28 @@
         </div>
     </form>
 </div>
+<script type="text/javascript">
+    $(function () {
+        Bind($("#selectInput"),$("#fileInput"),$("#selectInputTips"));
+
+        function Bind(click, hideInput, showTips) {
+            click.click(function() {
+                hideInput.click();
+            });
+            hideInput.change(function() {
+                var file = hideInput.get(0).files[0];
+                if (!file) showTips.text("未选择文件");
+                else showTips.text(file.name);
+            });
+        }
+
+        $("input[name='gender']").each(function () {
+            if($(this).val() === '<%= user.gender %>'){
+                $(this).attr("checked", "checked");
+            }
+        })
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 <%- include('footer') %>

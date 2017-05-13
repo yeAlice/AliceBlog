@@ -19,15 +19,19 @@ router.get('/', function (req, res, next) {
 
     PostModel.getPosts(author, page)
         .then(function (posts) {
-            PostModel.getPostsCount(author).then(function (count) {
-                res.render('posts', {
-                    posts: posts,
-                    page: page,
-                    author: author,
-                    isFirstPage: (page - 1) == 0,
-                    isLastPage: ((page - 1) * 10 + posts.length) == count
-                });
-            })
+            if(posts.length == 0){
+                res.render('noPost');
+            }else {
+                PostModel.getPostsCount(author).then(function (count) {
+                    res.render('posts', {
+                        posts: posts,
+                        page: page,
+                        author: author,
+                        isFirstPage: (page - 1) == 0,
+                        isLastPage: ((page - 1) * 10 + posts.length) == count
+                    });
+                })
+            }
         })
         .catch(next);
 });
@@ -179,6 +183,28 @@ router.get('/:postId/comment/:commentId/remove', checkLogin, function(req, res, 
             // 删除成功后跳转到上一页
             res.redirect('back');
         })
+        .catch(next);
+});
+
+/*根据关键词搜索文章
+* POST /posts/search */
+router.post('/search', function (req, res, next) {
+    var keyword = req.fields.keyword;
+    PostModel.search(keyword)
+        .then(function (posts) {
+                if(!posts) {
+                    throw new Error('服务器报错啦');
+                }else {
+                    if(posts.length == 0) {
+                        req.flash('error', '找不到相关文章');
+                        res.redirect('back');
+                    }else {
+                        res.render('search', {
+                            posts: posts
+                        });
+                    }
+                }
+            })
         .catch(next);
 });
 

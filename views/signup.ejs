@@ -29,7 +29,13 @@
         </div>
         <div class="form-group">
             <label>头像</label>
-            <input type="file" name="avatar" id="avatar" required>
+            <input class="hideInput" type="file" name="avatar" id="fileInput" required>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn select-btn" id="selectInput" data-toggle="tooltip" data-placement="bottom" data-original-title="请选择文件">选择文件 </button>
+                </div>
+                <span class="form-control" id="selectInputTips"></span>
+            </div>
         </div>
         <div class="form-group">
             <label for="bio">个人简介</label>
@@ -40,5 +46,22 @@
         </div>
     </form>
 </div>
+<script type="text/javascript">
+    $(function () {
+        Bind($("#selectInput"),$("#fileInput"),$("#selectInputTips"));
 
+        function Bind(click, hideInput, showTips) {
+            click.click(function() {
+                hideInput.click();
+            });
+            hideInput.change(function() {
+                var file = hideInput.get(0).files[0];
+                if (!file) showTips.text("未选择文件");
+                else showTips.text(file.name);
+            });
+        }
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 <%- include('footer') %>

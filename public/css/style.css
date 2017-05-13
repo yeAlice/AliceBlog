@@ -149,12 +149,40 @@ pre {
     margin: 10px;
     border-radius: 0.4em;
     background-color: #0a246a;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
     text-decoration: none;
+}
+
+.big-avatar {
+    width: 40%;
+    margin: 10px 0;
 }
 
 .img_404 {
     display: block;
     margin: 40px auto;
+}
+
+.hideInput {
+    display: none !important;
+}
+
+.select-btn {
+    background-color: rgb(260,195,186);
+    color: #fff;
+}
+.img_nopost {
+    width: 10%;
+    display: block;
+    margin: 50px auto 20px auto;
+}
+
+.page_noPost a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(260,195,186);
+    text-decoration: none;
 }
