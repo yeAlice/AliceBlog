@@ -5,7 +5,7 @@
         <% posts.forEach(function (post) { %>
         <%- include('components/post-content', { post: post }) %>
         <% }) %>
-
+        <%- include('components/pagination') %>
     </div>
     <%- include('components/popular') %>
 </div>

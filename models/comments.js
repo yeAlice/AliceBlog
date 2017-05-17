@@ -4,6 +4,16 @@
 var marked = require('marked');
 var Comment = require('../lib/mongo').Comment;
 
+// 将 comment 的 content 从 markdown 转换成 html
+Comment.plugin('contentToHtml', {
+    afterFind: function (comments) {
+        return comments.map(function (comment) {
+            comment.content = marked(comment.content);
+            return comment;
+        });
+    }
+});
+
 module.exports = {
     // 创建一个留言
     create: function create(comment) {
@@ -16,7 +26,7 @@ module.exports = {
             .populate({path: 'author', model: 'User'})
             .sort({_id: 1})
             .addCreatedAt()
-            //.contentToHtml()
+            .contentToHtml()
             .exec();
     },
     // 通过文章 id 获取该文章下留言数
@@ -32,7 +42,4 @@ module.exports = {
     delCommentsByPostId: function delCommentsByPostId(postId) {
         return Comment.remove({ postId: postId }).exec();
     }
-
-
-
 };

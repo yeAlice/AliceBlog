@@ -106,12 +106,6 @@
     min-width: 40px;
 }
 
-pre {
-    border: 0;
-    background-color: rgba(240,195,186,0.15);
-    font-size: 14px;
-}
-
 .comment {
     padding-left: 0;
     margin-bottom: 20px;
@@ -214,6 +208,9 @@ pre {
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     word-break: keep-all;*/
+    border: 0;
+    background-color: rgba(240,195,186,0.15);
+    font-size: 14px;
 }
 
 .main-left {

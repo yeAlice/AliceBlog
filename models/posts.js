@@ -2,8 +2,25 @@
  * Created by 44254 on 2017/4/14.
  */
 
+var marked = require('marked');
 var Post = require('../lib/mongo').Post;
 var CommentModel = require('./comments');
+
+// 将 post 的 content 从 markdown 转换成 html
+Post.plugin('contentToHtml', {
+    afterFind: function (posts) {
+        return posts.map(function (post) {
+            post.content = marked(post.content);
+            return post;
+        });
+    },
+    afterFindOne: function (post) {
+        if (post) {
+            post.content = marked(post.content);
+        }
+        return post;
+    }
+});
 
 // 给 post 添加留言数 commentsCount
 Post.plugin('addCommentsCount', {
@@ -46,6 +63,7 @@ module.exports = {
             .populate({ path: 'author', model: 'User' })
             .sort({ _id: -1 })
             .addCreatedAt()
+            .contentToHtml()
             .addCommentsCount()
             .exec();
     },
@@ -68,6 +86,9 @@ module.exports = {
             })
             .populate({ path: 'author', model: 'User' })
             .sort({pv: -1})
+            .addCreatedAt()
+            .contentToHtml()
+            .addCommentsCount()
             .exec();
     },
     // 通过文章 id 获取一篇文章
@@ -76,6 +97,7 @@ module.exports = {
             .findOne({ _id: postId })
             .populate({ path: 'author', model: 'User' })
             .addCreatedAt()
+            .contentToHtml()
             .addCommentsCount()
             .exec();
     },
@@ -123,6 +145,7 @@ module.exports = {
             .populate({ path: 'author', model: 'User' })
             .sort({ _id: -1 })
             .addCreatedAt()
+            .contentToHtml()
             .addCommentsCount()
             .exec();
     }

@@ -208,11 +208,16 @@ router.get('/:postId/comment/:commentId/remove', checkLogin, function(req, res, 
 * POST /posts/search */
 router.post('/search', function (req, res, next) {
     var keyword = req.fields.keyword;
-    PostModel.search(keyword)
-        .then(function (posts) {
+    if(keyword == null) {
+        req.flash('error', '找不到相关文章');
+        res.redirect('back');
+    }else{
+        PostModel.search(keyword)
+            .then(function (posts) {
                 if(!posts) {
                     throw new Error('服务器报错啦');
                 }else {
+                    console.log(posts[0]);
                     if(posts.length == 0) {
                         req.flash('error', '找不到相关文章');
                         res.redirect('back');
@@ -223,7 +228,8 @@ router.post('/search', function (req, res, next) {
                     }
                 }
             })
-        .catch(next);
+            .catch(next);
+    }
 });
 
 module.exports = router;

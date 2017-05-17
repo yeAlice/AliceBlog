@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-10 col-sm-10 post-content">
         <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
-        <pre class="content-control"><%= post.content %></pre>
+        <pre class="content-control"><%- post.content %></pre>
         <div class="tag col-md-12 col-sm-12">
             <span class="text-muted pull-left"><%= post.created_at %></span>
             <% if(user && post.author._id && user._id.toString() === post.author._id.toString()) { %>
