@@ -37,7 +37,8 @@ router.post('/', checkNotLogin, function(req, res, next) {
             throw new Error('个人简介请限制在 1-30 个字符');
         }
         if (!req.files.avatar.name) {
-            throw new Error('缺少头像');
+            /*throw new Error('缺少头像');*/
+            avatar = "defaultAvatar.jpg";
         }
         if (password.length < 6) {
             throw new Error('密码至少 6 个字符');

@@ -1,0 +1,21 @@
+<div class="col-md-3 col-sm-3 author-msg whiteColor text-center">
+    <div class="author-msg-item">
+        <p class="title">博主信息</p>
+        <img src="/img/<%= post.author.avatar %>" alt="找不到图片哦" class="img-responsive">
+        <h4><%= post.author.name %></h4>
+        <p>性别：<%= ({m: '男', f: '女', x: '保密'})[post.author.gender] %></p>
+        <p>个人简介：<%= post.author.bio %></p>
+    </div>
+    <div class="author-msg-item text-left">
+        <p class="title">ta的热门文章</p>
+        <ul class="hot-wrap">
+            <% hotPosts.forEach(function (post) { %>
+            <li>
+                <a href="/posts/<%= post._id %>"><i class="glyphicon glyphicon-triangle-right"></i>
+                    <span><%= post.title %></span>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>

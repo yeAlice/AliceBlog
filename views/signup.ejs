@@ -1,14 +1,14 @@
 <%- include('header') %>
 
-<div class="blog-sign">
+<div class="blog-sign whiteColor">
     <h4 class="text-center">注&nbsp;&nbsp;&nbsp;&nbsp;册</h4>
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="name">用户名</label>
+            <label for="name">用户名</label><span class="red-color">*</span>
             <input type="text" name="name" class="form-control" id="name" placeholder="用户名" required>
         </div>
         <div class="form-group">
-            <label for="gender">性别</label><br>
+            <label for="gender">性别</label><span class="red-color">*</span><br>
             <label class="radio-inline">
                 <input type="radio" name="gender" id="m" value="m">男
             </label>
@@ -20,16 +20,16 @@
             </label>
         </div>
         <div class="form-group">
-            <label for="password">密码</label>
+            <label for="password">密码</label><span class="red-color">*</span>
             <input type="password" name="password" class="form-control" id="password" placeholder="密码" required>
         </div>
         <div class="form-group">
-            <label for="repassword">确认密码</label>
+            <label for="repassword">确认密码</label><span class="red-color">*</span>
             <input type="password" name="repassword" class="form-control" id="repassword" placeholder="确认密码" required>
         </div>
         <div class="form-group">
             <label>头像</label>
-            <input class="hideInput" type="file" name="avatar" id="fileInput" required>
+            <input class="hideInput" type="file" name="avatar" id="fileInput">
             <div class="input-group">
                 <div class="input-group-btn">
                     <button type="button" class="btn select-btn" id="selectInput" data-toggle="tooltip" data-placement="bottom" data-original-title="请选择文件">选择文件 </button>
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
             <label for="bio">个人简介</label>
-            <textarea class="form-control" rows="4" name="bio" id="bio" required></textarea>
+            <textarea class="form-control" rows="4" name="bio" id="bio">这个人很懒，什么都没有留下</textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn blog-btn">注&nbsp;&nbsp;册</button>

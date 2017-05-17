@@ -1,7 +1,13 @@
 <%- include('header') %>
 
 <% posts.forEach(function (post) { %>
-<%- include('components/post-content', { post: post }) %>
+<div class="col-md-12 col-sm-12">
+    <div class="col-md-2 col-sm-2"></div>
+    <div class="col-md-8 col-sm-8">
+        <%- include('components/post-content', { post: post }) %>
+    </div>
+    <div class="col-md-2 col-sm-2"></div>
+</div>
 <% }) %>
 
 <%- include('footer') %>

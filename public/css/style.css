@@ -68,17 +68,22 @@
     margin: 20px 35%;
 }
 
-.post-content, .comments-content {
-    padding: 0 20px 10px 20px;
-    margin-bottom: 20px;
+.post-content {
+    padding: 0 20px !important;
+    border-left: 1px solid rgb(240,195,186);
+}
+.comments-content {
+    padding: 0 20px !important;
+    margin: 20px 0 20px 30px;
     border: 1px solid rgb(240,195,186);
-    border-radius: 0.4em;
+    border-radius: 0.5em;
 }
 
 .avatar {
     width: 50px;
     height: 50px;
     border-radius: 25px;
+    margin: 20px auto 5px auto;
 }
 
 .small-avatar {
@@ -111,6 +116,9 @@ pre {
     padding-left: 0;
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(240,195,186,0.3);
+}
+.comment:last-child {
+    border-bottom: 0;
 }
 .content {
     margin-left: 15px;
@@ -185,4 +193,119 @@ pre {
     font-weight: 600;
     color: rgb(260,195,186);
     text-decoration: none;
+}
+
+.red-color {
+    color: red;
+}
+
+.nav-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0;
+    margin-top: -6px;
+}
+
+.content-control {
+    /*overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;*/
+}
+
+.main-left {
+    margin: 0 15px 0 30px;
+}
+.main-right {
+    background-color: #fff;
+}
+
+.main-content-itme {
+    padding: 20px 0;
+    background-color: #fff;
+    border-bottom: 1px dotted rgb(240,195,186);
+}
+
+.main-content-left a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+}
+
+.whiteColor {
+    background-color: #fff;
+}
+
+.personal-post {
+    padding: 20px 80px;
+}
+
+.personal-content {
+    margin-left: 30px;
+    padding: 10px 20px;
+    border: 1px solid rgb(240,195,186);
+    border-radius: 0.5em;
+}
+
+.personal-content-item {
+    border-bottom: 1px dotted rgb(240,195,186);
+}
+
+.author-msg {
+    border: 1px solid rgb(240,195,186);
+    border-radius: 0.5em;
+}
+
+.author-msg img {
+    width: 50%;
+    margin: 15px auto;
+}
+
+.title {
+    font-size: 20px;
+    color: rgb(240,195,186);
+    font-weight: 600;
+    padding: 10px;
+}
+
+.author-msg-item {
+    border-bottom: 1px dotted rgb(240,195,186);
+}
+
+.main-msg-item {
+
+}
+
+.hot-wrap {
+    padding: 0 20px 10px;
+}
+
+.hot-wrap li a {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.hot-wrap li a:hover {
+    color: rgba(20, 69, 124, 0.55);
+}
+
+.hot-wrap li span {
+    margin-left: 10px;
+}
+
+.hot-wrap li {
+    padding: 10px;
+    border-bottom: 1px dotted rgb(240,195,186);
+}
+
+.hot-wrap li:last-child {
+    border-bottom: 0;
 }

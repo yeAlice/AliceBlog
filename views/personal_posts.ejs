@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<div class="col-md-12 col-sm-12 personal-post ">
+    <div class="col-md-3 col-sm-3 author-msg whiteColor text-center">
+        <div class="author-msg-item">
+            <p class="title">博主信息</p>
+            <img src="/img/<%= posts[0].author.avatar %>" alt="找不到图片哦" class="img-responsive">
+            <h4><%= posts[0].author.name %></h4>
+            <p>性别：<%= ({m: '男', f: '女', x: '保密'})[posts[0].author.gender] %></p>
+            <p>个人简介：<%= posts[0].author.bio %></p>
+        </div>
+        <div class="author-msg-item text-left">
+            <p class="title">ta的热门文章</p>
+            <ul class="hot-wrap">
+                <% hotPosts.forEach(function (post) { %>
+                <li>
+                    <a href="/posts/<%= post._id %>"><i class="glyphicon glyphicon-triangle-right"></i>
+                        <span><%= post.title %></span>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-8 personal-content whiteColor">
+    <% posts.forEach(function (post) { %>
+        <div class="col-md-12 col-sm-12 personal-content-item">
+            <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
+            <pre class="content-control"><%= post.content %></pre>
+            <div class="tag col-md-12 col-sm-12">
+                <span class="text-muted pull-left"><%= post.created_at %></span>
+                <% if(user && post.author._id && user._id.toString() === post.author._id.toString()) { %>
+                <div class="delete-btn" style="display: inline-block;">
+                    <a href="/posts/<%= post._id %>/edit">编辑</a>
+                    <a href="/posts/<%= post._id %>/remove">删除</a>
+                </div>
+                <% } %>
+                <span class="text-muted pull-right">留言(<%= post.commentsCount %>)</span>
+                <span class="text-muted pull-right">浏览(<%= post.pv %>)</span>
+            </div>
+        </div>
+    <% }) %>
+        <%- include('components/pagination') %>
+    </div>
+</div>
+
+<%- include('footer') %>

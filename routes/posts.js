@@ -19,21 +19,36 @@ router.get('/', function (req, res, next) {
 
     PostModel.getPosts(author, page)
         .then(function (posts) {
-            if(posts.length == 0){
+            if (posts.length == 0) {
                 res.render('noPost');
-            }else {
+            } else {
                 PostModel.getPostsCount(author).then(function (count) {
-                    res.render('posts', {
-                        posts: posts,
-                        page: page,
-                        author: author,
-                        isFirstPage: (page - 1) == 0,
-                        isLastPage: ((page - 1) * 10 + posts.length) == count
-                    });
+                    PostModel.getHotPosts(author).then(function (hotPosts) {
+                        if(author){
+                            res.render('personal_posts', {
+                                posts: posts,
+                                hotPosts: hotPosts,
+                                page: page,
+                                author: author,
+                                isFirstPage: (page - 1) == 0,
+                                isLastPage: ((page - 1) * 10 + posts.length) == count
+                            })
+                        }else {
+                            res.render('posts', {
+                                posts: posts,
+                                hotPosts: hotPosts,
+                                page: page,
+                                author: author,
+                                isFirstPage: (page - 1) == 0,
+                                isLastPage: ((page - 1) * 10 + posts.length) == count
+                            })
+                        }
+                    })
                 })
             }
         })
         .catch(next);
+
 });
 
 /*发表一篇文章
@@ -90,10 +105,13 @@ router.get('/:postId', function (req, res, next) {
             if (!post) {
                 throw new Error('该文章不存在');
             }
-            res.render('post', {
-                post: post,
-                comments: comments
-            });
+            PostModel.getHotPosts(post.author._id).then(function (hotPosts) {
+                res.render('post', {
+                    post: post,
+                    hotPosts: hotPosts,
+                    comments: comments
+                });
+            })
         }).catch(next);
 });
 

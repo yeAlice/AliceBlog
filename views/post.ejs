@@ -1,4 +1,23 @@
 <%- include('header') %>
-<%- include('components/post-content')%>
-<%- include('components/comments') %>
+
+<div class="col-md-12 col-sm-12 personal-post">
+    <%- include('components/author') %>
+    <div class="col-md-8 col-sm-8 personal-content whiteColor">
+        <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
+        <pre class="content-control"><%= post.content %></pre>
+        <div class="tag col-md-12 col-sm-12">
+            <span class="text-muted pull-left"><%= post.created_at %></span>
+            <% if(user && post.author._id && user._id.toString() === post.author._id.toString()) { %>
+            <div class="delete-btn" style="display: inline-block;">
+                <a href="/posts/<%= post._id %>/edit">编辑</a>
+                <a href="/posts/<%= post._id %>/remove">删除</a>
+            </div>
+            <% } %>
+            <span class="text-muted pull-right">留言(<%= post.commentsCount %>)</span>
+            <span class="text-muted pull-right">浏览(<%= post.pv %>)</span>
+        </div>
+    </div>
+    <%- include('components/comments') %>
+</div>
+
 <%- include('footer') %>

@@ -90,7 +90,7 @@ router.post('/:userId/edit', checkLogin, function (req, res, next) {
 
     // 待写入数据库的用户信息
     var user;
-    if(!avatar){
+    if(avatar !== null){
         user = {
             name: name,
             password: password,

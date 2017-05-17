@@ -1,0 +1,14 @@
+<div class="col-md-3 col-sm-3 whiteColor main-msg">
+    <div class="main-msg-item">
+        <p class="title">热门文章top10</p>
+        <ul class="hot-wrap">
+            <% hotPosts.forEach(function (post) { %>
+            <li>
+                <a href="/posts/<%= post._id %>"><i class="glyphicon glyphicon-triangle-right"></i>
+                    <span><%= post.title %></span>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>

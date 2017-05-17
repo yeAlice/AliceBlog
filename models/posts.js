@@ -49,12 +49,26 @@ module.exports = {
             .addCommentsCount()
             .exec();
     },
+    //获取文章总数
     getPostsCount: function getPostsCount(author){
         var query = {};
         if (author) {
             query.author = author;
         }
         return Post.count(query).exec();
+    },
+    getHotPosts: function getHotPosts(author) {
+        var query = {};
+        if (author) {
+            query.author = author;
+        }
+        return Post
+            .find(query, {
+                limit: 10
+            })
+            .populate({ path: 'author', model: 'User' })
+            .sort({pv: -1})
+            .exec();
     },
     // 通过文章 id 获取一篇文章
     getPostById: function getPostById(postId) {

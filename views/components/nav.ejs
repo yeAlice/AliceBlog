@@ -23,12 +23,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-item"><a href="/posts">主页</a></li>
                 <% if(user) { %>
+                <li class="navbar-item"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
+                <li class="navbar-item"><a href="/posts/create">发表文章</a></li>
                 <li class="dropdown navbar-item">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.name %><span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;<%= user.name %>
+                        <img src="/img/<%= user.avatar %>" alt="噢，图裂了" class="nav-avatar img-responsive pull-left">
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li class="navbar-item"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
-                        <li class="navbar-item"><a href="/posts/create">发表文章</a></li>
-                        <li class="navbar-item"><a href="/users/<%= user._id %>">个人信息</a></li>
                         <li class="navbar-item"><a href="/users/<%= user._id %>/edit">修改个人信息</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="navbar-item"><a href="/signout">登出</a></li>
