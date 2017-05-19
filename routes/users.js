@@ -110,6 +110,7 @@ router.post('/:userId/edit', checkLogin, function (req, res, next) {
     UserModel.updateUserById(userId, user)
         .then(function () {
             req.flash('success', '修改个人信息成功');
+            req.session.user.avatar = user.avatar;
             // 编辑成功后跳转到上一页
             res.redirect('/posts?author='+userId);
         })

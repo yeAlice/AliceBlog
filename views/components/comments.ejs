@@ -1,6 +1,8 @@
-<div class="col-md-3 col-sm-3"></div>
-<div class="col-md-8 col-sm-8 comments-content whiteColor">
+<div class="col-md-4 col-sm-4"></div>
+<div class="col-md-7 col-sm-7 comments-content whiteColor">
+    <% if (user || comments.length !== 0) { %>
     <h3>留言</h3><hr>
+    <% } %>
     <% comments.forEach(function (comment) { %>
     <div class="col-md-12 col-sm-12 comment">
         <div class="col-md-1 col-sm-1">

@@ -2,7 +2,7 @@
     <div class="author-msg-item">
         <p class="title">博主信息</p>
         <img src="/img/<%= post.author.avatar %>" alt="找不到图片哦" class="img-responsive">
-        <h4><%= post.author.name %></h4>
+        <h4><a href="/posts?author=<%= post.author._id %>"><%= post.author.name %></a></h4>
         <p>性别：<%= ({m: '男', f: '女', x: '保密'})[post.author.gender] %></p>
         <p>个人简介：<%= post.author.bio %></p>
     </div>

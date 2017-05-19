@@ -1,8 +1,9 @@
 <%- include('header') %>
 
 <div class="col-md-12 col-sm-12 personal-post">
+    <div class="col-md-1 col-sm-1"></div>
     <%- include('components/author') %>
-    <div class="col-md-8 col-sm-8 personal-content whiteColor">
+    <div class="col-md-7 col-sm-7 personal-content whiteColor">
         <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>
         <pre class="content-control"><%- post.content %></pre>
         <div class="tag col-md-12 col-sm-12">

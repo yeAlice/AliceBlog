@@ -1,11 +1,12 @@
 <%- include('header') %>
 
-<div class="col-md-12 col-sm-12 personal-post ">
+<div class="col-md-12 col-sm-12">
+    <div class="col-md-1 col-sm-1"></div>
     <div class="col-md-3 col-sm-3 author-msg whiteColor text-center">
         <div class="author-msg-item">
             <p class="title">博主信息</p>
             <img src="/img/<%= posts[0].author.avatar %>" alt="找不到图片哦" class="img-responsive">
-            <h4><%= posts[0].author.name %></h4>
+            <h4><a href="/posts?author=<%= posts[0].author._id %>"><%= posts[0].author.name %></a></h4>
             <p>性别：<%= ({m: '男', f: '女', x: '保密'})[posts[0].author.gender] %></p>
             <p>个人简介：<%= posts[0].author.bio %></p>
         </div>
@@ -22,7 +23,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-8 col-sm-8 personal-content whiteColor">
+    <div class="col-md-7 col-sm-7 personal-content whiteColor">
     <% posts.forEach(function (post) { %>
         <div class="col-md-12 col-sm-12 personal-content-item">
             <h3><a href="/posts/<%= post._id %>"><%= post.title %></a></h3>

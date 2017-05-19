@@ -37,10 +37,7 @@
 
 .blog-sign {
     padding: 15px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin: 20px 15px;
     border: 1px solid #f0c3ba;
     border-radius: 1em;
 }
@@ -65,7 +62,7 @@
 }
 
 .blog-notice {
-    margin: 20px 35%;
+    margin: 20px 0;
 }
 
 .post-content {
@@ -118,7 +115,10 @@
     margin-left: 15px;
 }
 .main-content {
-    padding: 10px 0;
+    padding: 10px;
+    background-color: rgba(240,195,186,0.15);
+    border-radius: 0.5em;
+    margin-bottom: 10px;
 }
 .name {
     color: #0d3349;
@@ -202,12 +202,18 @@
 }
 
 .content-control {
-    /*overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
-    word-break: keep-all;*/
+    /*overflow:hidden;
+    word-break:break-all;
+    display:-webkit-box;
+    -webkit-line-clamp:10;
+    -webkit-box-orient:vertical;*/
+
+    whitewhite-space:pre-wrap; /* css-3 */
+    whitewhite-space:-moz-pre-wrap; /* Mozilla, since 1999 */
+    whitewhite-space:-pre-wrap; /* Opera 4-6 */
+    whitewhite-space:-o-pre-wrap; /* Opera 7 */
+    word-wrap:break-word; /* Internet Explorer 5.5+ */
+    white-space: pre-wrap; /* Firefox */
     border: 0;
     background-color: rgba(240,195,186,0.15);
     font-size: 14px;
@@ -236,9 +242,9 @@
     background-color: #fff;
 }
 
-.personal-post {
+/*.personal-post {
     padding: 20px 80px;
-}
+}*/
 
 .personal-content {
     margin-left: 30px;
@@ -305,4 +311,18 @@
 
 .hot-wrap li:last-child {
     border-bottom: 0;
+}
+
+@media screen and (max-width:736px) {
+    .personal-content {
+        margin: 15px 0 10px 0;
+    }
+
+    .main-left {
+        margin: 10px 0;
+    }
+
+    .comments-content {
+        margin: 10px 0;
+    }
 }
