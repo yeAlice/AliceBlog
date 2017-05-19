@@ -21,7 +21,7 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-item"><a href="/posts">主页</a></li>
+                <li class="navbar-item active"><a href="/posts">主页</a></li>
                 <% if(user) { %>
                 <li class="navbar-item"><a href="/posts?author=<%= user._id %>">个人主页</a></li>
                 <li class="navbar-item"><a href="/posts/create">发表文章</a></li>

@@ -3,7 +3,7 @@ module.exports = {
     session: { //express-session 的配置信息
         secret: 'aliceblog',
         key: 'aliceblog',
-        maxAge: 2592000000
+        maxAge: 2160000
     },
     mongodb: 'mongodb://localhost:27017/aliceblog'
 };

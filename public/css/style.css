@@ -18,7 +18,7 @@
     padding-right: 5%;
 }
 .blog-title {
-    color: rgb(240,195,186);
+    color: #F08884;
     font-size: 30px;
 }
 .navbar-header a:hover {
@@ -30,10 +30,14 @@
     color: #000;
 }
 
-.navbar-nav a:hover {
-    background-color: rgb(240,195,186);
+.navbar-nav li a:hover, .navbar-nav .open a:focus {
+    background-color: rgba(51,122,183,0.4);
     color: #fff;
 }
+
+/*.navbar-nav li a:visited {
+    background-color: red;
+}*/
 
 .blog-sign {
     padding: 15px;
